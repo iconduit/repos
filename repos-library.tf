@@ -14,31 +14,6 @@ module "repo_html_webpack_plugin" {
   ci_workflows = ["library"]
 }
 
-import {
-  to = module.repo_html_webpack_plugin.github_repository.this
-  id = "html-webpack-plugin"
-}
-
-import {
-  to = module.repo_html_webpack_plugin.github_actions_repository_permissions.this
-  id = "html-webpack-plugin"
-}
-
-import {
-  to = module.repo_html_webpack_plugin.github_repository_file.license
-  id = "html-webpack-plugin/LICENSE"
-}
-
-import {
-  to = module.repo_html_webpack_plugin.github_repository_file.dot_github_workflows_publish_release_yml["basic"]
-  id = "html-webpack-plugin/.github/workflows/publish-release.yml"
-}
-
-import {
-  to = module.repo_html_webpack_plugin.github_repository_file.dot_github_workflows_publish_package_yml["basic"]
-  id = "html-webpack-plugin/.github/workflows/publish-package.yml"
-}
-
 module "repo_iconduit" {
   source      = "./modules/repo"
   name        = "iconduit"
