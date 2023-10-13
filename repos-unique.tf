@@ -24,28 +24,13 @@ module "repo_demo" {
   has_publish_release_workflow = false
 }
 
-import {
-  to = module.repo_demo.github_repository.this
-  id = "demo"
+module "repo_renovate" {
+  source       = "./modules/repo"
+  name         = "renovate"
+  description  = "Self-hosted Renovate for Iconduit"
+  homepage_url = "https://github.com/iconduit/renovate/actions/workflows/renovate.yml"
+
+  has_publish_package_workflow = false
+  has_publish_release_workflow = false
+  manage_renovate              = false
 }
-
-import {
-  to = module.repo_demo.github_actions_repository_permissions.this
-  id = "demo"
-}
-
-import {
-  to = module.repo_demo.github_repository_file.license
-  id = "demo/LICENSE"
-}
-
-# module "repo_renovate" {
-#   source       = "./modules/repo"
-#   name         = "renovate"
-#   description  = "Self-hosted Renovate for Iconduit"
-#   homepage_url = "https://github.com/iconduit/renovate/actions/workflows/renovate.yml"
-
-#   has_publish_package_workflow = false
-#   has_publish_release_workflow = false
-#   manage_renovate              = false
-# }
