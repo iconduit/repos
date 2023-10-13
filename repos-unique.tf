@@ -4,26 +4,27 @@ module "repo_org_dot_github_dot_io" {
   description  = "The Iconduit website"
   homepage_url = "https://iconduit.github.io"
 
-  pages_branch = "main"
+  pages_branch = "gh-pages"
 
+  ci_workflows                 = ["library"]
   has_publish_package_workflow = false
   has_publish_release_workflow = false
 }
 
-import {
-  to = module.repo_org_dot_github_dot_io.github_repository.this
-  id = "iconduit.github.io"
-}
+# import {
+#   to = module.repo_org_dot_github_dot_io.github_repository.this
+#   id = "iconduit.github.io"
+# }
 
-import {
-  to = module.repo_org_dot_github_dot_io.github_actions_repository_permissions.this
-  id = "iconduit.github.io"
-}
+# import {
+#   to = module.repo_org_dot_github_dot_io.github_actions_repository_permissions.this
+#   id = "iconduit.github.io"
+# }
 
-import {
-  to = module.repo_org_dot_github_dot_io.github_repository_file.license
-  id = "iconduit.github.io/LICENSE"
-}
+# import {
+#   to = module.repo_org_dot_github_dot_io.github_repository_file.license
+#   id = "iconduit.github.io/LICENSE"
+# }
 
 # module "repo_renovate" {
 #   source       = "./modules/repo"
