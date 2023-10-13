@@ -33,7 +33,7 @@ resource "github_repository_file" "dot_github_workflows_ci_scheduled_yml" {
 }
 
 resource "github_repository_file" "dot_github_workflows_publish_package_yml" {
-  for_each = toset(["basic"])
+  for_each = toset(var.has_publish_package_workflow ? ["basic"] : [])
 
   commit_author       = module.constants.committer.name
   commit_email        = module.constants.committer.email

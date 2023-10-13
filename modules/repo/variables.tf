@@ -48,6 +48,12 @@ variable "ci_workflows" {
   default     = []
 }
 
+variable "has_publish_package_workflow" {
+  description = "Whether to add a basic GitHub Actions NPM package publishing workflow"
+  type        = bool
+  default     = true
+}
+
 variable "has_publish_release_workflow" {
   description = "Whether to add a basic GitHub Actions release publishing workflow"
   type        = bool
