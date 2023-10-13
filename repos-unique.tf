@@ -11,20 +11,33 @@ module "repo_org_dot_github_dot_io" {
   has_publish_release_workflow = false
 }
 
-# import {
-#   to = module.repo_org_dot_github_dot_io.github_repository.this
-#   id = "iconduit.github.io"
-# }
+module "repo_demo" {
+  source       = "./modules/repo"
+  name         = "demo"
+  description  = "Demonstrations of Iconduit's output"
+  homepage_url = "https://iconduit.github.io/demo"
 
-# import {
-#   to = module.repo_org_dot_github_dot_io.github_actions_repository_permissions.this
-#   id = "iconduit.github.io"
-# }
+  pages_branch = "gh-pages"
 
-# import {
-#   to = module.repo_org_dot_github_dot_io.github_repository_file.license
-#   id = "iconduit.github.io/LICENSE"
-# }
+  ci_workflows                 = ["library"]
+  has_publish_package_workflow = false
+  has_publish_release_workflow = false
+}
+
+import {
+  to = module.repo_demo.github_repository.this
+  id = "demo"
+}
+
+import {
+  to = module.repo_demo.github_actions_repository_permissions.this
+  id = "demo"
+}
+
+import {
+  to = module.repo_demo.github_repository_file.license
+  id = "demo/LICENSE"
+}
 
 # module "repo_renovate" {
 #   source       = "./modules/repo"
