@@ -1,3 +1,11 @@
+module "repo_browserconfig_loader" {
+  source      = "./modules/repo"
+  name        = "browserconfig-loader"
+  description = "A Webpack loader for browserconfig.xml files"
+
+  ci_workflows = ["library"]
+}
+
 module "repo_consumer" {
   source      = "./modules/repo"
   name        = "consumer"
@@ -18,6 +26,14 @@ module "repo_iconduit" {
   source      = "./modules/repo"
   name        = "iconduit"
   description = "A build system for web application icon and image assets"
+
+  ci_workflows = ["library"]
+}
+
+module "repo_webmanifest_loader" {
+  source      = "./modules/repo"
+  name        = "webmanifest-loader"
+  description = "A Webpack loader for .webmanifest files"
 
   ci_workflows = ["library"]
 }
