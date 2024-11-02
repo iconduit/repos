@@ -19,14 +19,14 @@ jobs:
           node-version-file: .nvmrc
           registry-url: "https://registry.npmjs.org"
 
+      - name: Set package version
+        run: make set-package-version
+
       - name: Install dependencies
         run: make link-dependencies
 
       - name: Make
         run: make ci
-
-      - name: Set package version
-        run: make set-package-version
 
       - name: Publish package
         if: success()
