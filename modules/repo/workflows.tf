@@ -1,87 +1,39 @@
-resource "github_repository_file" "dot_github_workflows_ci_yml" {
-  for_each = toset(var.ci_workflows)
+removed {
+  from = github_repository_file.dot_github_workflows_ci_yml
 
-  commit_author       = module.constants.committer.name
-  commit_email        = module.constants.committer.email
-  repository          = github_repository.this.name
-  file                = ".github/workflows/ci-${each.value}.yml"
-  commit_message      = "Update \"CI\" GHA workflow"
-  overwrite_on_create = true
-
-  content = templatefile("dot-github/workflows/ci.yml", {
-    ci_type  = each.value
-    org      = module.constants.org
-    org_name = module.constants.org_name
-  })
+  lifecycle {
+    destroy = false
+  }
 }
 
-resource "github_repository_file" "dot_github_workflows_ci_scheduled_yml" {
-  for_each = toset(var.ci_workflows)
+removed {
+  from = github_repository_file.dot_github_workflows_ci_scheduled_yml
 
-  commit_author       = module.constants.committer.name
-  commit_email        = module.constants.committer.email
-  repository          = github_repository.this.name
-  file                = ".github/workflows/ci-${each.value}-scheduled.yml"
-  commit_message      = "Update \"CI (scheduled)\" GHA workflow"
-  overwrite_on_create = true
-
-  content = templatefile("dot-github/workflows/ci-scheduled.yml", {
-    ci_type  = each.value
-    org      = module.constants.org
-    org_name = module.constants.org_name
-  })
+  lifecycle {
+    destroy = false
+  }
 }
 
-resource "github_repository_file" "dot_github_workflows_publish_package_yml" {
-  for_each = toset(var.has_publish_package_workflow ? ["basic"] : [])
+removed {
+  from = github_repository_file.dot_github_workflows_publish_package_yml
 
-  commit_author       = module.constants.committer.name
-  commit_email        = module.constants.committer.email
-  repository          = github_repository.this.name
-  file                = ".github/workflows/publish-package.yml"
-  commit_message      = "Update \"Publish package\" GHA workflow"
-  overwrite_on_create = true
-
-  content = templatefile("dot-github/workflows/publish-package.yml", {
-    org      = module.constants.org
-    org_name = module.constants.org_name
-  })
+  lifecycle {
+    destroy = false
+  }
 }
 
-resource "github_repository_file" "dot_github_workflows_publish_release_yml" {
-  for_each = toset(var.has_publish_release_workflow ? ["basic"] : [])
+removed {
+  from = github_repository_file.dot_github_workflows_publish_release_yml
 
-  commit_author       = module.constants.committer.name
-  commit_email        = module.constants.committer.email
-  repository          = github_repository.this.name
-  file                = ".github/workflows/publish-release.yml"
-  commit_message      = "Update \"Publish release\" GHA workflow"
-  overwrite_on_create = true
-
-  content = templatefile("dot-github/workflows/publish-release.yml", {
-    discussion_category     = var.has_release_discussions ? "Releases" : ""
-    make_target             = var.release_make_target == null ? "" : var.release_make_target
-    org                     = module.constants.org
-    org_name                = module.constants.org_name
-    use_release_action_main = var.use_release_action_main
-  })
+  lifecycle {
+    destroy = false
+  }
 }
 
-resource "github_repository_file" "dot_github_workflows_publish_release_manual_yml" {
-  for_each = toset(var.has_publish_release_workflow ? ["basic"] : [])
+removed {
+  from = github_repository_file.dot_github_workflows_publish_release_manual_yml
 
-  commit_author       = module.constants.committer.name
-  commit_email        = module.constants.committer.email
-  repository          = github_repository.this.name
-  file                = ".github/workflows/publish-release-manual.yml"
-  commit_message      = "Update \"Publish release (manual)\" GHA workflow"
-  overwrite_on_create = true
-
-  content = templatefile("dot-github/workflows/publish-release-manual.yml", {
-    discussion_category     = var.has_release_discussions ? "Releases" : ""
-    make_target             = var.release_make_target == null ? "" : var.release_make_target
-    org                     = module.constants.org
-    org_name                = module.constants.org_name
-    use_release_action_main = var.use_release_action_main
-  })
+  lifecycle {
+    destroy = false
+  }
 }
