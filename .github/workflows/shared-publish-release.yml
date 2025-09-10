@@ -44,7 +44,7 @@ jobs:
         run: make ${{ github.event.inputs.makeTarget }}
 
       - name: Publish release
-        uses: ghalactic/github-release-from-tag@v5
+        uses: ghalactic/github-release-from-tag@v6
         with:
           reactions: hooray,heart,rocket
           discussionCategory: ${{ steps.checkTag.outputs.isSemVer == 'true' && github.event.inputs.discussionCategory || '' }}
